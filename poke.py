@@ -22,12 +22,12 @@ search_box.send_keys("place to eat dinner")
 search_box.send_keys(Keys.ENTER)
 
 # find the first search result and print the title
-search_results = driver.find_elements(By.CSS_SELECTOR, "li.b_algo")
-if len(search_results) > 0:
+try:
+    search_results = driver.find_elements(By.CSS_SELECTOR, "li.b_algo")
     first_result = search_results[0]
     first_result_title = first_result.find_element(By.CSS_SELECTOR, "h2").text
     print("Place to eat dinner: ", first_result_title)
-else:
+except IndexError:
     print("No search results found.")
 
 # navigate back to the Bing homepage
@@ -39,12 +39,12 @@ search_box.send_keys("movie to watch at 11pm")
 search_box.send_keys(Keys.ENTER)
 
 # find the first search result and print the title
-search_results = driver.find_elements(By.CSS_SELECTOR, "li.b_algo")
-if len(search_results) > 0:
+try:
+    search_results = driver.find_elements(By.CSS_SELECTOR, "li.b_algo")
     first_result = search_results[0]
     first_result_title = first_result.find_element(By.CSS_SELECTOR, "h2").text
     print("Movie to watch at 11pm: ", first_result_title)
-else:
+except IndexError:
     print("No search results found.")
 
 # close the browser window
